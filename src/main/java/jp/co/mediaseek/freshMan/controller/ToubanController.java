@@ -23,6 +23,6 @@ public class ToubanController {
 
 		List<Touban> toubanList = toubanRepository.findByDeleteflg(ToubanConstants.DELETE_FLG_OFF);
 		model.addAttribute("toubanList", toubanList);
-		return "Touban";
+		return "touban";
 	}
 }
