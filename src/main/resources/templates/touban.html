@@ -10,7 +10,7 @@
 	<h1>当番振り分けページ</h1>
 <table class="table table-striped">
 	<tr>
-		<th>#</th>
+		<th>表示順</th>
 		<th>名前</th>
 		<th>電話番回数</th>
 		<th>コーヒー当番回数</th>
@@ -18,51 +18,51 @@
 		<th colspan="5">担当不可の曜日</th>
 		<th colspan="2"></th>
 	</tr>
-	<tr th:each="l : ${toubanList}">
-		<td th:text="${l.id}"></td>
-		<td th:text="${l.personName}"></td>
-		<td th:text="${l.denwaCount}"></td>
-		<td th:text="${l.coffeeCount}"></td>
-		<td th:text="${l.seihyokiCount}"></td>
-		<div th:if="${l.checkMonday}">
+	<tr th:each="touban : ${toubanList}">
+		<td th:text="${touban.junban}"></td>
+		<td th:text="${touban.personName}"></td>
+		<td th:text="${touban.denwaCount}"></td>
+		<td th:text="${touban.coffeeCount}"></td>
+		<td th:text="${touban.seihyokiCount}"></td>
+		<div th:if="${touban.checkMonday}">
 			<td>月</td>
 		</div>
-		<div th:unless="${l.checkMonday}">
+		<div th:unless="${touban.checkMonday}">
 			<td></td>
 		</div>
-		<div th:if="${l.checkTuesday}">
+		<div th:if="${touban.checkTuesday}">
 			<td>火</td>
 		</div>
-		<div th:unless="${l.checkTuesday}">
+		<div th:unless="${touban.checkTuesday}">
 			<td></td>
 		</div>
-		<div th:if="${l.checkWednesday}">
+		<div th:if="${touban.checkWednesday}">
 			<td>水</td>
 		</div>
-		<div th:unless="${l.checkWednesday}">
+		<div th:unless="${touban.checkWednesday}">
 			<td></td>
 		</div>
-		<div th:if="${l.checkThursday}">
+		<div th:if="${touban.checkThursday}">
 			<td>木</td>
 		</div>
-		<div th:unless="${l.checkThursday}">
+		<div th:unless="${touban.checkThursday}">
 			<td></td>
 		</div>
-		<div th:if="${l.checkFriday}">
+		<div th:if="${touban.checkFriday}">
 			<td>金</td>
 		</div>
-		<div th:unless="${l.checkFriday}">
+		<div th:unless="${touban.checkFriday}">
 			<td></td>
 		</div>
 		<td>
 			<form action="" method="POST">
-				<input type="hidden" name="detailNo" th:value="${l.id}">
+				<input type="hidden" name="detailNo" th:value="${touban.id}">
 				<input type="submit" class="btn btn-info" value="編集">
 			</form>
 		</td>
 		<td>
 			<form action="" method="POST">
-				<input type="hidden" name="detailNo" th:value="${l.id}">
+				<input type="hidden" name="detailNo" th:value="${touban.id}">
 				<input type="submit" class="btn btn-danger" value="削除">
 			</form>
 		</td>
