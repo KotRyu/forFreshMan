@@ -18,7 +18,7 @@ public class ToubanController {
 		this.toubanRepository = toubanRepository;
 	}
 
-	@GetMapping("touban")
+	@GetMapping("/touban")
 	public String showTouban(Model model){
 
 		List<Touban> toubanList = toubanRepository.findByDeleteflg(ToubanConstants.DELETE_FLG_OFF);
