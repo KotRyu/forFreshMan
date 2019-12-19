@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>当番</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+	<h1>当番振り分けページ</h1>
+<table class="table table-striped">
+	<tr>
+		<th>#</th>
+		<th>名前</th>
+		<th>電話番回数</th>
+		<th>コーヒー当番回数</th>
+		<th>製氷機回数</th>
+		<th colspan="5">担当不可の曜日</th>
+		<th colspan="2"></th>
+	</tr>
+	<tr th:each="l : ${toubanList}">
+		<td th:text="${l.id}"></td>
+		<td th:text="${l.personName}"></td>
+		<td th:text="${l.denwaCount}"></td>
+		<td th:text="${l.coffeeCount}"></td>
+		<td th:text="${l.seihyokiCount}"></td>
+		<div th:if="${l.checkMonday}">
+			<td>月</td>
+		</div>
+		<div th:unless="${l.checkMonday}">
+			<td></td>
+		</div>
+		<div th:if="${l.checkTuesday}">
+			<td>火</td>
+		</div>
+		<div th:unless="${l.checkTuesday}">
+			<td></td>
+		</div>
+		<div th:if="${l.checkWednesday}">
+			<td>水</td>
+		</div>
+		<div th:unless="${l.checkWednesday}">
+			<td></td>
+		</div>
+		<div th:if="${l.checkThursday}">
+			<td>木</td>
+		</div>
+		<div th:unless="${l.checkThursday}">
+			<td></td>
+		</div>
+		<div th:if="${l.checkFriday}">
+			<td>金</td>
+		</div>
+		<div th:unless="${l.checkFriday}">
+			<td></td>
+		</div>
+		<td>
+			<form action="" method="POST">
+				<input type="hidden" name="detailNo" th:value="${l.id}">
+				<input type="submit" class="btn btn-info" value="編集">
+			</form>
+		</td>
+		<td>
+			<form action="" method="POST">
+				<input type="hidden" name="detailNo" th:value="${l.id}">
+				<input type="submit" class="btn btn-danger" value="削除">
+			</form>
+		</td>
+	</tr>
+</table>
+</div>
+<div class="container">
+<div style="text-align:center">
+	<div class="btn-group" role="group">
+		<form action="/" method="Get">
+			<input type="submit" class="btn btn-outline-primary w-100" value="　戻る　">
+		</form>
+		<form action="/" method="Get">
+			<input type="submit" class="btn btn-outline-dark w-100" value="新規登録">
+		</form>
+		<form action="/" method="Get">
+			<input type="submit" class="btn btn-outline-info w-100" value=" 振り分け ">
+		</form>
+	</div>
+</div>
+</div>
+
+
+
+</body>
+</html>
