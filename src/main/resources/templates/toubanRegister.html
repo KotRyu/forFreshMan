@@ -9,6 +9,12 @@
 	<form action="NewRegister" method="post" name="form" th:object="${touban}">
 		<div class="container">
 			<h1>新規登録</h1>
+			<div th:if="${errMsg}">
+				<div class="alert alert-danger" role="alert">
+					<i class="fas fa-exclamation-triangle"></i>
+					<td th:text="${errMsg}"></td>
+				</div>
+			</div>
 			<div class="form-group">
 				<label><span class="badge badge-danger">必須</span>振り分け順</label></br>
 				<input type="text" class="form-control" name="junban" maxlength="2" pattern="^[0-9]+$" title="半角数字で入力してください" required>
