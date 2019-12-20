@@ -36,7 +36,7 @@ public class Touban {
 	@Column
 	private int checkFriday = ToubanConstants.CHECK_ZERO;
 	@Column
-	private int junban = ToubanConstants.JUNBAN_SHOKI;
+	private int junban;
 	@Column
 	private String deleteflg = ToubanConstants.DELETE_FLG_OFF;
 }

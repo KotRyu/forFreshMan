@@ -1,5 +1,6 @@
 package jp.co.mediaseek.freshMan.controller;
 
+import jp.co.mediaseek.freshMan.domains.ErrorMsgConstants;
 import jp.co.mediaseek.freshMan.domains.Touban;
 import jp.co.mediaseek.freshMan.repositories.interfaces.ToubanRepository;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,22 @@ public class ToubanRegisterController {
 	@PostMapping("NewRegister")
 	public String newRegister(Model model, @ModelAttribute Touban touban){
 
-		return "toubanRegisterComp";
+		System.out.println(touban);
+
+		if(touban.getPersonName()
+				.replaceFirst("^[\\s　]+", "")
+				.replaceFirst("[\\s　]+$", "")
+				.length() == 0){
+			model.addAttribute("errMsg", ErrorMsgConstants.PERSON_MAME_BLANK);
+			return "toubanRegister";
+
+		} else {
+			toubanRepository.saveAndFlush(touban);
+			return "toubanRegisterComp";
+
+		}
+
+
 
 	}
 }

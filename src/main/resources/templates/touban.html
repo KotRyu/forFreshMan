@@ -61,9 +61,9 @@
 			</form>
 		</td>
 		<td>
-			<form action="" method="POST">
+			<form action="/Delete" method="POST">
 				<input type="hidden" name="detailNo" th:value="${touban.id}">
-				<input type="submit" class="btn btn-danger" value="削除">
+				<input type="submit" class="btn btn-danger" onclick="return confirm('削除しますか？')" value="削除">
 			</form>
 		</td>
 	</tr>
