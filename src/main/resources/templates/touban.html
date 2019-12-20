@@ -55,14 +55,14 @@
 			<td></td>
 		</div>
 		<td>
-			<form action="" method="POST">
-				<input type="hidden" name="detailNo" th:value="${touban.id}">
+			<form action="/Edit" method="POST">
+				<input type="hidden" name="id" th:value="${touban.id}">
 				<input type="submit" class="btn btn-info" value="編集">
 			</form>
 		</td>
 		<td>
 			<form action="/Delete" method="POST">
-				<input type="hidden" name="detailNo" th:value="${touban.id}">
+				<input type="hidden" name="id" th:value="${touban.id}">
 				<input type="submit" class="btn btn-danger" onclick="return confirm('削除しますか？')" value="削除">
 			</form>
 		</td>

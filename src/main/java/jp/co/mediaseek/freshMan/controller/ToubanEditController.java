@@ -8,44 +8,42 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class ToubanRegisterController {
+public class ToubanEditController {
 	private ToubanRepository toubanRepository;
 
-	public ToubanRegisterController(ToubanRepository toubanRepository){
+	public ToubanEditController(ToubanRepository toubanRepository){
 		this.toubanRepository = toubanRepository;
 	}
 
-	@GetMapping("Register")
-	public String showRegisterPage(){
-
-		return "toubanRegister";
+	@PostMapping("/Edit")
+	public String editPaging(Model model, @RequestParam int id){
+		Touban toubanToEdit = toubanRepository.getOne(id);
+		model.addAttribute("toubanToEdit", toubanToEdit);
+		return "toubanEdit";
 	}
 
-	@PostMapping("NewRegister")
-	public String newRegister(Model model, @ModelAttribute Touban touban){
-
-
+	@PostMapping("/EditTouban")
+	public String edit(Model model, @ModelAttribute Touban touban){
 		if(touban.getPersonName()
 				.replaceFirst("^[\\s　]+", "")
 				.replaceFirst("[\\s　]+$", "")
 				.length() == 0){
 			model.addAttribute("errMsg", ErrorMsgConstants.PERSON_MAME_BLANK);
-			return "toubanRegister";
+			return "toubanEdit";
 
 		} else {
 			toubanRepository.saveAndFlush(touban);
-			return "redirect:registerPaging";
+			return "redirect:editPaging";
 
 		}
 
-
-
 	}
 
-	@GetMapping("registerPaging")
-	public String registerPaging(){
-		return "toubanRegisterComp";
+	@GetMapping("editPaging")
+	public String editComp(){
+		return "toubanEditComp";
 	}
 }
