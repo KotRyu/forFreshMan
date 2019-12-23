@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>振り分け完了</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="container">
+	<h1>振り分ける日付</h1>
+	<table class="table table-striped">
+		<tr th:each="wd : ${weekDayList}">
+			<td th:text="wd.month">月</td>
+			<td th:text="wd.workDay">日</td>
+			<td th:text="wd.dayOfWeek">曜日</td>
+
+		</tr>
+	</table>
+</div>
+
+
+</body>
+</html>
