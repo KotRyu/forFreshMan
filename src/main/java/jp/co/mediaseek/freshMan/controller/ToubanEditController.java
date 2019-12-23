@@ -32,6 +32,8 @@ public class ToubanEditController {
 				.replaceFirst("[\\s　]+$", "")
 				.length() == 0){
 			model.addAttribute("errMsg", ErrorMsgConstants.PERSON_MAME_BLANK);
+			Touban toubanToEdit = toubanRepository.getOne(touban.getId());
+			model.addAttribute("toubanToEdit", toubanToEdit);
 			return "toubanEdit";
 
 		} else {

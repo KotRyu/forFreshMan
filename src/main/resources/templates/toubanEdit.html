@@ -8,7 +8,7 @@
 <body>
 <form action="EditTouban" method="post" name="form" th:object="${toubanToEdit}">
 	<div class="container">
-		<h1>新規登録</h1>
+		<h1>新規編集</h1>
 		<div th:if="${errMsg}">
 			<div class="alert alert-danger" role="alert">
 				<i class="fas fa-exclamation-triangle"></i>
@@ -26,25 +26,26 @@
 		<div class="form-group>">
 			<label>担当不可の曜日</label></br>
 			<div class="form-check form-check-inline">
-				<input type="checkbox" th:field="${toubanToEdit.checkMonday}" value="1">
+				<input type="checkbox" name="checkMonday" value="1">
 				<label class="form-check-label">月</label>
 			</div>
 			<div class="form-check form-check-inline">
-				<input type="checkbox" th:field="${toubanToEdit.checkTuesday}" value="1">
+				<input type="checkbox" name="checkTuesday" value="1">
 				<label class="form-check-label">火</label>
 			</div>
 			<div class="form-check form-check-inline">
-				<input type="checkbox" th:field="${toubanToEdit.checkWednesday}" value="1">
+				<input type="checkbox" name="checkWednesday" value="1">
 				<label class="form-check-label">水</label>
 			</div>
 			<div class="form-check form-check-inline">
-				<input type="checkbox" th:field="${toubanToEdit.checkThursday}" value="1">
+				<input type="checkbox" name="checkThursday" value="1">
 				<label class="form-check-label">木</label>
 			</div>
 			<div class="form-check form-check-inline">
-				<input type="checkbox" th:field="${toubanToEdit.checkFriday}" value="1">
+				<input type="checkbox" name="checkFriday" value="1">
 				<label class="form-check-label">金</label>
 			</div>
+
 		</div>
 		<input type="hidden" th:field="${toubanToEdit.id}">
 		<input type="hidden" th:field="${toubanToEdit.deleteflg}">
